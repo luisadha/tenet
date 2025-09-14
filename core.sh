@@ -126,6 +126,10 @@ function htmx_page() {
       STYLE_TEXT='<link rel="stylesheet" href="/static/tailwind.css">'
     fi
   fi
+  EXTRA_HEAD=${EXTRA_HEAD:-""}
+  if [[ ! -z $title ]]; then
+    EXTRA_HEAD+="<title>$title</title>"
+  fi
   [[ ${HTTP_HEADERS["hx-request"]} == "true" ]] || [[ "$INTERNAL_REQUEST" == "true" ]] || cat <<-EOF
   <!doctype html>
   <html>
@@ -133,6 +137,7 @@ function htmx_page() {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="UTF-8">
   ${STYLE_TEXT}
+  ${EXTRA_HEAD}
   <script src="https://unpkg.com/htmx.org@1.9.3/dist/htmx.min.js" integrity="sha384-lVb3Rd/Ca0AxaoZg5sACe8FJKF0tnUgR2Kd7ehUOG5GCcROv5uBIZsOqovBAcWua" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
   <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>

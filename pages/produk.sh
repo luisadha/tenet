@@ -3,10 +3,7 @@ header Content-Type text/html
 end_headers
 
 title="Paket Robux"
-
 htmx_page <<EOF
-<title>$title</title>
-
 <h2>$title</h2>
 
 <div class="card">
