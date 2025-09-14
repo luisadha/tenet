@@ -26,7 +26,7 @@ htmx_page <<EOF
 
   <!-- Halaman utama -->
 
-  <div id="main" class="absolute inset-0 bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-gray-800"
+<div id="main" class="absolute inset-0 bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-gray-800"
        style="background-image: url('./static/images/background.jpg'); z-index: 1;">
 
 <div class="card">
@@ -39,11 +39,8 @@ htmx_page <<EOF
     <input type="hidden" name="price" value="72000">
     <input type="text" name="buyer" placeholder="E-Mail">
     <button type="submit">Beli</button>
-  </form>
-  
+  </form></div>
 </div>
-  
-  </div>
 
   <!-- Sambutan transparan di atas -->
   <div id="welcome" class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-white z-10">
