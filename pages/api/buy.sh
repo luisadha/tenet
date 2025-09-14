@@ -15,7 +15,7 @@ if [ ! -e "$ORDERS_FILE" ]; then
   echo "timestamp,product,price,buyer" > "$ORDERS_FILE"
 fi
 TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-echo "${TIMESTAMP},${PRODUCT},${PRICE},\"${BUYER}\"" >> "$ORDERS_FILE"
+echo "${TIMESTAMP},${FORM_DATA[product]},${FORM_DATA[price]},\"${FORM_DATA[buyer]}\"" >> "$ORDERS_FILE"
 
 cat <<JSON
 {"status":"ok","product":"${FORM_DATA[product]}","price":"${FORM_DATA[price]}","buyer":"${FORM_DATA[buyer]}","note":"order saved"}
