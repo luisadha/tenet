@@ -1,6 +1,6 @@
 # headers
-# header Content-Type text/html
-# end_headers
+ header Content-Type text/html
+ end_headers
 
 title="Paket Robux"
 htmx_page <<EOF
