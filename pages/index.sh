@@ -20,7 +20,7 @@ htmx_page <<EOF
     <h1 class="text-4xl font-bold mb-8">Voucher</h1>
 
     <!-- Card kategori -->
-    <a href="./pages/product/voucher/roblox" 
+    <a href="/product/voucher/roblox">
        class="block bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition p-6 w-64 text-center">
       <img src="./static/images/roblox-blue.png" alt="Roblox Games" class="w-20 mx-auto mb-4">
       <h2 class="text-lg font-semibold text-gray-800">Roblox Voucher</h2>
