@@ -31,7 +31,6 @@ input {
 }
 
 .card {
-  background: #0b1220;
   border: 1px solid #1f2937;
   padding: 12px;
   border-radius: 8px;
@@ -50,3 +49,15 @@ form input[type="text"] {
   padding: 6px;
   margin-right: 6px;
 }
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .zoom-in {
+    animation: zoomIn 1.5s ease;
+  }
+  @keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }

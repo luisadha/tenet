@@ -126,6 +126,12 @@ function htmx_page() {
       STYLE_TEXT='<link rel="stylesheet" href="/static/tailwind.css">'
     fi
   fi
+  BODY_TAG="body"
+  if [[ -z $body_props ]]; then
+    for key in "${!body_props[@]}"; do
+      BODY_TAG+=" ${key}=\"${body_props[$key]}\""
+    done
+  fi
   EXTRA_HEAD=${EXTRA_HEAD:-""}
   if [[ ! -z $title ]]; then
     EXTRA_HEAD+="<title>$title</title>"
@@ -142,7 +148,7 @@ function htmx_page() {
   <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
   <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
   </head>
-  <body>
+  <${BODY_TAG}>
   $(_inject_hmr)
 EOF
 
