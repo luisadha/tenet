@@ -64,7 +64,4 @@ htmx_page <<EOF
   </script>
 </header>
 
-
-
-
 EOF
