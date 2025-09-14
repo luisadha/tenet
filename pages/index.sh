@@ -26,7 +26,12 @@ htmx_page <<EOF
   <!-- Halaman utama -->
   <div id="main" class="absolute inset-0 bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-gray-800"
        style="background-image: url('./static/images/background.jpg'); z-index: 1;">
-    <h1 class="text-4xl font-bold mb-8">Topup Roblox</h1>
+
+    <h1 class="text-4xl  font-bold  mb-8">Populer</h1>
+    
+    <h1 class="text-4xl  font-bold  mb-8">Games</h1>
+    
+    <h1 class="text-4xl font-bold mb-8">Voucher</h1>
 
     <!-- Card kategori -->
     <a href="/produk" 
