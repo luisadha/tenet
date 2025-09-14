@@ -1,0 +1,13 @@
+{
+  "name": "tenet",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "dependencies": {
+    "tailwindcss": "v3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

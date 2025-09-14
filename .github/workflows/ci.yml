@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+permissions: write-all
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+    - name: Install dependencies
+      run: bun install
+    - name: Compile tailwind
+      run: |
+        bunx tailwindcss -i ./static/style.css -o ./static/tailwind.css
+    - name: Move from dev to production
+      run: |
+        echo DEV=false >> config.sh
+        rm -rf node_modules
+    - name: Deploy to server
+      uses: easingthemes/ssh-deploy@main
+      with:
+        REMOTE_HOST: ${{ secrets.SSH_HOST }}
+        REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+        REMOTE_PORT: ${{ secrets.SSH_PORT }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+        SOURCE: ""
+        TARGET: /home/${{ secrets.SSH_USERNAME }}/apps/tenet
