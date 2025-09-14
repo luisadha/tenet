@@ -41,16 +41,3 @@ jobs:
           SOURCE: ""
           TARGET: /home/${{ secrets.SSH_USERNAME }}/apps/tenet
           EXCLUDE: "/node_modules/,/.git/"
-
-      - name: Push server changes back to GitHub
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          port: ${{ secrets.SSH_PORT }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd /home/${{ secrets.SSH_USERNAME }}/apps/tenet
-            git add .
-            git commit -m "Sync changes from server" || echo "No changes to commit"
-            git push origin main
