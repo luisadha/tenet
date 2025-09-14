@@ -3,10 +3,10 @@ name: Deploy
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     branches:
-    - main
+      - main
 
 permissions: write-all
 
@@ -14,25 +14,43 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: oven-sh/setup-bun@v2
-      with:
-        bun-version: latest
-    - name: Install dependencies
-      run: bun install
-    - name: Compile tailwind
-      run: |
-        bunx tailwindcss -i ./static/style.css -o ./static/tailwind.css
-    - name: Move from dev to production
-      run: |
-        echo DEV=false >> config.sh
-    - name: Deploy to server
-      uses: easingthemes/ssh-deploy@main
-      with:
-        REMOTE_HOST: ${{ secrets.SSH_HOST }}
-        REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-        REMOTE_PORT: ${{ secrets.SSH_PORT }}
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-        SOURCE: ""
-        TARGET: /home/${{ secrets.SSH_USERNAME }}/apps/tenet
-        EXCLUDE: "/node_modules/,/.git/"
+      - uses: actions/checkout@v2
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Compile tailwind
+        run: |
+          bunx tailwindcss -i ./static/style.css -o ./static/tailwind.css
+
+      - name: Move from dev to production
+        run: |
+          echo DEV=false >> config.sh
+
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@main
+        with:
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          SOURCE: ""
+          TARGET: /home/${{ secrets.SSH_USERNAME }}/apps/tenet
+          EXCLUDE: "/node_modules/,/.git/"
+
+      - name: Push server changes back to GitHub
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/${{ secrets.SSH_USERNAME }}/apps/tenet
+            git add .
+            git commit -m "Sync changes from server" || echo "No changes to commit"
+            git push origin main
