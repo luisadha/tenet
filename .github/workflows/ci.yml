@@ -27,14 +27,19 @@ jobs:
         echo DEV=false >> config.sh
     - name: Deploy to server
       uses: easingthemes/ssh-deploy@main
+      env:
+        TARGET: /home/${{ secrets.SSH_USERNAME }}/apps/tenet
       with:
         REMOTE_HOST: ${{ secrets.SSH_HOST }}
         REMOTE_USER: ${{ secrets.SSH_USERNAME }}
         REMOTE_PORT: ${{ secrets.SSH_PORT }}
         SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
         SOURCE: ""
-        TARGET: /home/${{ secrets.SSH_USERNAME }}/apps/tenet
+        TARGET: ${{ env.TARGET }}
         EXCLUDE: "/node_modules/,/.git/"
         SCRIPT_BEFORE: |
           # remove some directories
-          rm -rf static/* pages/*
+          rm -rf ${{ env.TARGET }}/static/* ${{ env.TARGET }}/pages/*
+        SCRIPT_AFTER: |
+          echo restart > /home/${{ secrets.SSH_USERNAME }}/tenet.fifo
+          rm -rf ${{ env.TARGET }}/local_ssh_script-*
