@@ -1,2 +1,3 @@
 PROJECT_NAME=tenet
 TAILWIND=on
+HIDE_LOGO=true

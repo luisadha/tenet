@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd "${0%/*}"
-source $HOME/.bashrc
+[ -e $HOME/.bashrc ] && source $HOME/.bashrc
 [[ -f 'config.sh' ]] && source config.sh
 
 if [[ "${DEV:-true}" == "true" ]] && [[ ! -z "$TAILWIND" ]]; then
@@ -22,7 +22,7 @@ mkdir -p pubsub
 mkdir -p data
 mkdir -p uploads
 
-PORT=${PORT:-10013}
+PORT=${PORT:-3000}
 
 TCP_PROVIDER=${TCP_PROVIDER:-tcpserver}
 
