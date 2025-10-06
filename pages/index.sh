@@ -31,9 +31,9 @@ htmx_page <<EOF
   <h1 class="text-4xl sm:text-5xl font-bold mb-10">Voucher</h1>
 
   <!-- Card kategori -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-3xl">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-2xl">
     <a href="/product/voucher/roblox"
-       class="block bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-xl transform hover:scale-105 transition p-6 w-full text-center">
+       class="block bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition p-6 w-full text-center">
       <img src="/static/images/roblox-blue.png" alt="Roblox Games" class="w-24 mx-auto mb-5">
       <h2 class="text-xl font-semibold text-gray-800">Roblox Voucher</h2>
       <p class="text-base text-gray-600 mt-2">Roblox Gift Card (IDR RBX) Roblox Corporation</p>
