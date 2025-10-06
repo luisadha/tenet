@@ -22,7 +22,7 @@ htmx_page <<EOF
  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-2xl">
   <a href="/product/diamond/mlbb"
        class="block bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition p-6 w-full text-center">
-      <img src="/static/images/mlbb.png" alt="MLBB" class="w-24 mx-auto mb-5">
+      <img src="/static/images/mlbb-logo.png" alt="MLBB" class="w-24 mx-auto mb-5">
       <h2 class="text-xl font-semibold text-gray-800">Mobile Legends</h2>
       <p class="text-base text-gray-600 mt-2">Diamond & Top-Up Resmi Moonton</p>
     </a>
