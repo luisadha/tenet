@@ -5,4 +5,4 @@
 # Plan
 * integrasi xendiit
 * Perbanyak elemen visual
-* 
+* dll.
